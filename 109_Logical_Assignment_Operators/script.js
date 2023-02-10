@@ -1,54 +1,37 @@
-// the nulllish (??) nhận giá trị null và undefined là FALSE còn 0 và '' là TRUE
-// dùng để kiểm tra xem có tồn tại hay ko
-const restaurant = {
-    name: 'Classico Italiano',
-    location: 'Via Angelo Tavanti 23, Firenze, Italy',
-    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+// logical assignment operators: toán tử gán
 
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0, // Open 24 hours
-            close: 24,
-        },
-    },
+const rest1 = {
+    name: "Tiến", 
+    // numGuests: 20, //0
+    numGuests: 0, //0
+}
 
-    order: function (starterIndex, mainIndex) {
-        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-    },
+const rest2 = {
+    name: "Tùng",
+    owner: "Tôi",
+}
 
-    orderDelivery: function ({starterIndex = 1, mainIndex = 2, time, address}) {
-        console.log(
-            this.starterMenu[starterIndex], this.mainMenu[mainIndex], time, address
-        );
-    },
 
-    orderPasta: function (ing1, ing2, ing3) {
-        console.log(`Mỳ ống gồm có ${ing1}, ${ing2}, ${ing3}`);
-    },
+// toán tử gán OR (OR assginment operators): trả về giá trị TRUE đầu tiên
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
 
-    orderPizza: function (mainIngredients, ...ing) {
-        console.log(mainIngredients);
-        console.log(ing);
-    }
-};
+// viết ngắn
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+// console.log("rest1.numGuests: "+rest1.numGuests + ", rest2.numGuests: "+rest2.numGuests);
 
-console.log(3 || 'Tùng'); // 3
-console.log('' || 'Tùng'); // Tùng
-console.log(0 || true); // true
-console.log(undefined || null || 0 || ''); // ''
-console.log(undefined || 0 || '' || 'Tùng' || 23 || null);
+// nếu rest1.numGuests = 0 thì dùng
+// nullish assignment operator
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+console.log("rest1.numGuests: "+rest1.numGuests + ", rest2.numGuests: "+rest2.numGuests);
 
-// cách dùng
-restaurant.numguests = 0;
-const num = restaurant.numguests ?? 10;
-console.log(num); // 0
+// toán tử AND (AND assginment operators): trả về giá trị FALSE đầu tiên
+// rest1.owner = rest1.owner && "<ANONYMOUS>";
+// rest2.owner = rest2.owner && "<ANONYMOUS>";
+
+rest1.owner &&= "<ANONYMOUS>";
+rest2.owner &&= "<ANONYMOUS>";
+console.log("rest1.owner: " + rest1.owner + ", rest2.owner: "+ rest2.owner);
+console.log(rest1);
